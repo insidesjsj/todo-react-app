@@ -6,6 +6,7 @@
 - 스프링 @Configurtion을 이용한 CORS 문제 해결
 - fetch를 이용한 프론트엔드와 백엔드 통합
 
+
 3.3.1 componentDidMount
 : 렌더링이 맨 처음 일어나는 순간, 즉 ReactDOM 트리가 존재하지 않는 상태에서 리액트가 처음으로 각 컴포넌트의 render() 함수를 콜해 자신의 DOM 트리를 구성하는 과정을 마운팅이라고 한다.
 마운팅 과정에서 생성자자와 render() 함수를 부르는데 마운팅을 마친 후 바로 부르는 함수가 componentDidMount라는 함수다.
@@ -22,3 +23,18 @@ If an opaque response serves your needs, set the request's mode to 'no-cors' to 
 
 : 보안을 위한 CORS 헤더 Policy를 위반했기 때문에 에러가 나온다.
 
+
+3.3.2 CORS
+: 처음 리소스를 제공한 도메인(Origin)이 현재 요청하려는 도메인과 다르더라도 요청을 허락해 주는 웹 보안 방침
+
+브라우저는 HTTP 요청의 헤더에 이 요청의 Origin을 함께 보낸다.
+HTTP OPTION 요청을 보내는 경우 http://localhost:8053은 이 요청을 보낸 리소스의 원래 서버, 즉 요청의 Origin을 확인한다.
+만약 요청의 Origin이 자신과 같은 Origin이라면 요청을 수행, 다른면 거절한다.
+
+CORS가 가능하려면 백엔드에서 CORS 방침 설정을 해줘야한다.
+1) 스프링 부트 애플리케이션 프로젝트로 돌아가 com.example.demo.config라는 패키지를 만들고
+
+2) WebMvcConfig라는 클래스를 만들어준다.
+: WebMvcConfig의 addCorsMappings 메서드에서 작성한 설정은 다음과 같은 의미를 지닌다.
+- 모든 경로(/**)에 대해 Origin이 http://localhost:3000인 경우 GET, POST, PUT, PATCH, DELETE 메서드를 이용한 요청을 허용
+- 모든 헤더와 인증에 관한 정보도 허용
