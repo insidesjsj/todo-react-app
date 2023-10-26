@@ -25,3 +25,38 @@
 
 3) Todo.js에서 deleteEventHandler를 만들고 클릭 이벤트
 
+3.2.4 Todo 수정
+요구사항 분석
+- Todo 컴포넌트에 readOnly 플래그가 있어 readOnly가 true인 경우 아이템 수정이 불가능하고 false인 경우 아이템을 수정
+- 사용자가 어떤 아이템의 title을 클릭하면 해당 input field는 수정할 수 있는 상태, 즉 readOnly가 false인 상태가 된다.
+- 사용자가 Enter키 또는 Return키를 누르면 readOnly가 true인 상태로 전환
+- 체크박스 클릭 시 item.done 값을 전환.
+
+ReadOnly Mode
+1) Todo.js에서 readOnly 상태 변수 추가
+
+2) Todo.js에서 offReadOnlyMode() 함수 추가
+: title 클릭시 readOnly의 상태가 false로 바뀜
+
+3) readOnly와 offReadOnlyMode 연결
+
+4) enterKeyEventHandler를 생성해서 onKeyDown에 연결
+: 수정 완료되면 엔터를 눌러서 readOnly가 다시 true 변환
+
+
+ReadOnly True
+1) Todo.js에서 enterKeyEventHandler() 생성
+
+2) enterKeyEventHandler onKeyDown에 연결
+
+
+Item 수정 함수
+1) Todo.js에서 EditEventHandler 작성
+
+2) onChange와 EditEventHandler 연결
+
+
+Checkbox 업데이트
+1) Todo.js에서 checkboxEventHandler() 생성
+
+2) onChange와 checkboxEventHandler 연결
