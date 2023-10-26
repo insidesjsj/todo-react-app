@@ -19,5 +19,9 @@
 - enterKeyEventHandler
 
 3.2.3 Todo 삭제
+1) mui로 삭제 아이콘 생성
 
+2) App.js에서 delete 함수 생성 후, Todo 컴포넌트로 보내줌
+
+3) Todo.js에서 deleteEventHandler를 만들고 클릭 이벤트
 

@@ -7,12 +7,10 @@ import AppTodo from "./AppTodo";
 class  App extends React.Component {
     constructor(props) {
         super(props);
+        // Add, Delete 기능이 있으므로 테스팅용으로 추가했던 데이터 삭제
         this.state = {
-            items: [
-                {id: 0, title: "Hello World 1", done: true},
-                {id: 1, title: "Hello World 2", done: false}
-            ],
-        }
+            items: [],
+        };
     }
 
     add = (item) => {
@@ -24,12 +22,25 @@ class  App extends React.Component {
         console.log("items : ", this.state.items);
     }
 
+    delete = (item) => {
+        const thisItems = this.state.items;
+        console.log("Before Update Items : ", this.state.items);
+        const newItems = thisItems.filter(e => e.id !== item.id);
+        this.setState({items: newItems}, () => {
+            console.log("Update Items : ", this.state.items)
+        });
+    }
+
     render() {
         var todoItems = this.state.items.length > 0 && (
             <Paper style={{margin: 16}}>
                 <List>
                     {this.state.items.map((item, idx) => (
-                        <Todo item={item} key={item.id}/>
+                        <Todo
+                            item={item}
+                            key={item.id}
+                            delete={this.delete}
+                        />
                     ))}
                 </List>
             </Paper>
