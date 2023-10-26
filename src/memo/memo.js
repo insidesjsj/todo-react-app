@@ -1,17 +1,15 @@
-function exampleFunction() {
-    return new Promise((resolve, reject) => {
-        var oReq = new XMLHttpRequest();
-        oReq.open("GET", "http://localhost:8080");
-        oReq.onload = function () {
-            resolve(oReq.response); // Resolve 상태
-        };
-        oReq.onerror = function () {
-            reject(oReq.response);  // Reject 상태
-        };
-        oReq.send();    // pending 상태
-    });
-}
+let options = {
+    method: "POST",
+    headers: [
+        ["Content-Type", "application/json"]
+    ],
+    body: JSON.stringify("")
+};
 
-exampleFunction()
-    .then((r) => console.log("Resolved " + r))
-    .catch((e) => console.log("Rejected " + e));
+fetch("http://localhost:8080/todo", options)
+    .then(respone => {
+        // reponse 수신 시 하고 싶은 작업
+    })
+    .catch(e=> {
+        // 에러가 났을 때 하고 싶은 작업
+    })
