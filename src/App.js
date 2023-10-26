@@ -28,10 +28,15 @@ class  App extends React.Component {
 
     delete = (item) => {
         call("/todo", "DELETE", item).then((response) =>
-            this.setState({items: response.data })
+            this.setState({ items: response.data })
         )
     }
 
+    update = (item) => {
+        call("/todo", "PUT", item).then((response) =>
+            this.setState({ items: response.data })
+        )
+    }
 
     render() {
         var todoItems = this.state.items.length > 0 && (
@@ -42,6 +47,7 @@ class  App extends React.Component {
                             item={item}
                             key={item.id}
                             delete={this.delete}
+                            update={this.update}
                         />
                     ))}
                 </List>
